@@ -3,7 +3,7 @@ from django.db import models
 
 class Stanowisko(models.Model):
     nazwa = models.CharField(max_length=30)
-    opis = models.TextField(null=True, blank=True)
+    opis = models.CharField(null=True, blank=True, max_length=100)
 
 
 class Osoba(models.Model):

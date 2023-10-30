@@ -12,6 +12,8 @@ class StanowiskoSerializer(serializers.Serializer):
     def update(self, instance, validated_data):
         instance.nazwa = validated_data.get('nazwa', instance.nazwa)
         instance.opis = validated_data.get('opis', instance.opis)
+        instance.save()
+        return instance
 
 
 class OsobaModelSerializer(serializers.ModelSerializer):

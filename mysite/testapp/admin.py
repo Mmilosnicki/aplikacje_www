@@ -9,13 +9,16 @@ class OsobaAdmin(admin.ModelAdmin):
 
     @admin.display(empty_value='')
     def Stanowisko(self, obj):
-        return f"{obj.stanowisko.nazwa, obj.stanowisko.id}"
+        if obj.stanowisko:
+            return f"{obj.stanowisko.nazwa, obj.stanowisko.id}"
+        else:
+            "Brak stanowiska"
 
 
 class StanowiskoAdmin(admin.ModelAdmin):
     list_display = ['nazwa']
     list_filter = ['nazwa']
 
+
 admin.site.register(Osoba, OsobaAdmin)
 admin.site.register(Stanowisko, StanowiskoAdmin)
-

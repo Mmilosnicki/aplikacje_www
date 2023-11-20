@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import serializers
 from .models import *
 
@@ -23,13 +25,13 @@ class OsobaModelSerializer(serializers.ModelSerializer):
         return value
 
     def validate_data_dodania(self, value):
-        if value > timezone.now().date():
-            raise serializers.ValidationError('Data nie moze być z przyszłości')
+        if value > datetime.now():
+            raise serializers.ValidationError('Data nie moze być z przyszłości.')
         return value
 
     class Meta:
         model = Osoba
-        fields = ['id', 'imie', 'nazwisko', 'plec', 'stanowisko', 'data_dodania']
+        fields = ['id', 'imie', 'nazwisko', 'plec', 'stanowisko', 'data_dodania', 'wlasciciel']
 
     def update(self, instance, validated_data):
         instance.imie = validated_data.get('imie', instance.imie)

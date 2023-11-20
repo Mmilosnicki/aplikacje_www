@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib import auth
 from .models import *
 
 
@@ -12,7 +13,7 @@ class OsobaAdmin(admin.ModelAdmin):
         if obj.stanowisko:
             return f"{obj.stanowisko.nazwa, obj.stanowisko.id}"
         else:
-            "Brak stanowiska"
+            return "Brak stanowiska"
 
 
 class StanowiskoAdmin(admin.ModelAdmin):

@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 
 class Stanowisko(models.Model):
@@ -18,9 +17,11 @@ class Osoba(models.Model):
     plec = models.IntegerField(choices=Plec.choices)
     stanowisko = models.ForeignKey(Stanowisko, null=True, blank=True, on_delete=models.DO_NOTHING)
     data_dodania = models.DateField(auto_now_add=True)
+    wlasciciel = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
 
     class Meta:
-        ordering = ['nazwisko']
+        ordering = ['id']
+        permissions = [("can_view_other_persons", "Test"), ]
 
     def __str__(self):
         return '%s %s' % (self.imie, self.nazwisko)

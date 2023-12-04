@@ -17,7 +17,7 @@ class Osoba(models.Model):
     plec = models.IntegerField(choices=Plec.choices)
     stanowisko = models.ForeignKey(Stanowisko, null=True, blank=True, on_delete=models.DO_NOTHING)
     data_dodania = models.DateField(auto_now_add=True)
-    wlasciciel = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
+    #wlasciciel = models.ForeignKey('auth.User', on_delete=models.DO_NOTHING)
 
     class Meta:
         ordering = ['id']
